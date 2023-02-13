@@ -30,4 +30,5 @@ params = { ...params, ...customParams };
 
 /* start server ------------------------------------------------------------- */
 
-liveServer.start({ ...params, ...customParams });
+// liveServer.start({ ...params, ...customParams });
+liveServer.start(params);
