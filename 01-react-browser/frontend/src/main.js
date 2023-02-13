@@ -1,5 +1,6 @@
 import './utils/supportJavaScript.js';
 // import './vanilla.script.js';
+import './react.script.js';
 
 // 명령형 프로그래밍
 // const root = document.getElementById('root');
@@ -14,35 +15,35 @@ import './utils/supportJavaScript.js';
 
 // 범쌤 JavaScript
 // 바닐라 프로젝트 (명령형 프로그래밍)
-import { createElement, state, render, update } from './vanilla.script.js';
+// import { createElement, state, render, update } from './vanilla.script.js';
 
-const app = createElement(
-  'section', 
-  {
-    'class': 'app',
-    'aria-label': 'Like React App'
-  }, 
-  createElement('h1', {}, 'hello App'),
-  createElement('p', {}, 'blab blab blab'),
-  createElement('ul', {}, 
-    createElement('li', {}, 'item 1'),
-    createElement('li', {}, 'item 2'),
-    createElement('li', {}, 'item 3'),
-  ),
-);
+// const app = createElement(
+//   'section', 
+//   {
+//     'class': 'app',
+//     'aria-label': 'Like React App'
+//   }, 
+//   createElement('h1', {}, 'hello App'),
+//   createElement('p', {}, 'blab blab blab'),
+//   createElement('ul', {}, 
+//     createElement('li', {}, 'item 1'),
+//     createElement('li', {}, 'item 2'),
+//     createElement('li', {}, 'item 3'),
+//   ),
+// );
 
-document.getElementById('root').append(app);
+// document.getElementById('root').append(app);
 
-// console.log(state);
+// // console.log(state);
 
-// render(state);
+// // render(state);
 
-document.addEventListener('click', () => {
-  update({
-    subjects: 'React는 선언형 프로그래밍 방식을 사용합니다.'
-  });
+// document.addEventListener('click', () => {
+//   update({
+//     subjects: 'React는 선언형 프로그래밍 방식을 사용합니다.'
+//   });
 
-  // console.log(state);
-});
+//   // console.log(state);
+// });
 
-// console.log('React 개발 시작하기! 😊');
+console.log('React 개발 시작하기! 😊');
