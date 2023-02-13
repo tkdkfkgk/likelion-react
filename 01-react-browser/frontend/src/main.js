@@ -1,10 +1,7 @@
-import './utils/supportJavaScript.js';
-
-// import './vanilla.script.js';
-
-import './react.script.js';
-
-// import './likereact.script.js';
+// import './utils/supportJavaScript.js';
+// import './learn/vanilla.script.js';
+// import './learn/likereact.script.js';
+import './learn/react.script.js';
 
 
 // import { createElement as h, render } from './likeReact/index.js';
