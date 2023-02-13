@@ -46,4 +46,4 @@ import './react.script.js';
 //   // console.log(state);
 // });
 
-console.log('React 개발 시작하기! 😊');
+// console.log('React 개발 시작하기! 😊');
