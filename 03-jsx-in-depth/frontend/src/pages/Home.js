@@ -1,21 +1,16 @@
 class Home extends React.Component {
 
   state = {
-    members: this.props.likeLionMembers ?? [
-      { id: 1, name: 'a'},
-      { id: 2, name: 'b'},
-      { id: 3, name: 'c'},
-    ]
+    members: this.props.likeLionMembers ?? []
   };
-
-  handleFilterLab = () => {
+  
+  handleFilterLab = (labNumber) => {
+    // 나는 무슨 일을 해야 하는가?
+    // 데이터 분석
+    // 어떻게 걸러낼 것인가?
+    // 걸러내는 프로그래밍 로직은?
     this.setState({
-      members: this.state.members.filter(member => {
-        // return 되는 결과 값이 true인 것만 필터링 한다.
-        // A && B ?
-        // A || B ?
-        return member.name.includes('c') || member.name.includes('a')
-      })
+      members: this.state.members.filter(member => member.lab === labNumber)
     });
   }
 
@@ -24,18 +19,34 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <h2>멋쟁이 사자처럼 프론트엔드 스쿨 4기 멤버</h2>
-        <button 
-          type="button" 
-          style={{ marginBottom: 10 }}
-          onClick={this.handleFilterLab}
-        >
-          A, C 너네들 좀 따라와!
-        </button>
+        <div role="group" style={{display: 'flex', gap: 8}}>
+          <button
+            type="button"
+            style={{ marginBottom: 20 }}
+            onClick={() => this.handleFilterLab(4)}
+          >
+            LAB 4조 모여!
+          </button>
+          <button
+            type="button"
+            style={{ marginBottom: 20 }}
+            onClick={() => this.handleFilterLab(10)}
+          >
+            LAB 10조 모여!
+          </button>
+          <button
+            type="button"
+            style={{ marginBottom: 20 }}
+            onClick={() => this.handleFilterLab(2)}
+          >
+            LAB 2조 모여!
+          </button>
+        </div>
         <ul>
           {
-            this.state.members.map(({ id, name, gender }) => 
+            this.state?.members.map(({ id, lab, name, gender }) => 
               <li key={id}>
-                <p><span>{ gender?.includes('여성') ? '🙆🏻‍♀️' : '🙆🏻‍♂️' }</span> {name}</p>
+                <p><b>{lab}</b> <span>{ gender?.includes('여성') ? '🙆🏻‍♀️' : '🙆🏻‍♂️' }</span> {name}</p>
               </li>
             )
           }
