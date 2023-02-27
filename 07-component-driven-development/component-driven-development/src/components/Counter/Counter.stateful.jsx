@@ -1,8 +1,11 @@
 import classes from './Counter.module.scss';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { useCompareProp } from '@/hooks/useCompareProp';
+
+// [React hook] useMemo를 사용해 컴포넌트 기억하기
+// [React HOC] React.memo를 사용해 컴포넌트 기억하기
 
 export function CounterStateful({
   count: initialCount,
@@ -16,27 +19,37 @@ export function CounterStateful({
 
   const combineClassNames = classNames(classes.Counter, className);
 
-  const handleIncrement = () => {
+  const handleIncrement = useCallback(() => {
     setCount((count) => count + step);
-  };
-
-  const memoizedIncrement = useCallback(handleIncrement, [step]);
+  }, [step]);
 
   const handleDecrement = useCallback(() => {
     setCount((count) => count - step);
   }, [step]);
 
-  return (
-    <div className={combineClassNames}>
-      <CountButton label={buttonLabels.increment} onUpdate={memoizedIncrement}>
+  const memoIncButton = useMemo(
+    () => (
+      <CountButton label={buttonLabels.increment} onUpdate={handleIncrement}>
         +
       </CountButton>
+    ),
+    [buttonLabels.increment, handleIncrement]
+  );
 
-      <CountOutput>{count}</CountOutput>
-
-      {/* <CountButton label={buttonLabels.decrement} onUpdate={handleDecrement}>
+  const memoDecButton = useMemo(
+    () => (
+      <CountButton label={buttonLabels.decrement} onUpdate={handleDecrement}>
         -
-      </CountButton> */}
+      </CountButton>
+    ),
+    [buttonLabels.decrement, handleDecrement]
+  );
+
+  return (
+    <div className={combineClassNames}>
+      {memoIncButton}
+      <CountOutput>{count}</CountOutput>
+      {memoDecButton}
     </div>
   );
 }
